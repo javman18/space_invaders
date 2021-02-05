@@ -9,6 +9,7 @@ class PygameApp():
         self.active_scene = None
         self.width = 800
         self.height = 600
+        self.font = None
         self.init_pygame()
 
     def init_pygame(self):
@@ -31,7 +32,7 @@ class PygameApp():
 
 
     def load_assets(self):
-        pass
+        self.font=pygame.font.Font("assets/fonts/HyliaSerif.ttf", 62)
 
 
     def process_events(self):

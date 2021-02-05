@@ -11,7 +11,7 @@ class PlayScene (Scene):
         
 
     def start(self):
-        self.platform.add_platform(self.plat_list)
+        
         print('se inicia: ', self.name)
     
     
