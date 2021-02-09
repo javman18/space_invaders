@@ -22,11 +22,26 @@ class PlayScene (Scene):
             if event.key == pygame.K_x:
                 self.app.change_scene('intro')
                 print('se presiono una tecla')
+            elif event.key == pygame.K_LEFT:
+                self.ship.speed = -3
+                print('se presiono una tecla')
+            elif event.key == pygame.K_RIGHT:
+                self.ship.speed = 3
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT:
+                self.ship.speed = 0
+            elif event.key == pygame.K_RIGHT:
+                self.ship.speed = 0
             
             
     
     def update(self):
-        pass
+        self.ship.update()
+        if self.ship.rect.x > self.app.width - self.ship.rect.width:
+            self.ship.rect.x = self.app.width - self.ship.rect.width
+        elif self.ship.rect.x < 0:
+            self.ship.rect.x = 0
     
     def draw(self):
         self.screen.fill((255,255,255))
