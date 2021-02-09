@@ -1,11 +1,13 @@
 import pygame
 from Scene import Scene
+from ship import Ship
 import random
 
 class PlayScene (Scene):
     def __init__(self, app):
         self.app = app
         self.screen = app.screen
+        self.ship = Ship(app)
         super().__init__('PlayScene')
         
         
@@ -28,8 +30,8 @@ class PlayScene (Scene):
     
     def draw(self):
         self.screen.fill((255,255,255))
-        pygame.draw.rect(self.screen, (0, 255, 0), (0,550,self.app.width,50))
-        
+        #pygame.draw.rect(self.screen, (0, 255, 0), (0,550,self.app.width,50))
+        self.ship.draw()
         
 
     
