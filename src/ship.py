@@ -17,4 +17,8 @@ class Ship:
         
     def update(self):
         self.rect.x += self.speed
+        if self.rect.x > self.screen_rect.width - self.rect.width:
+            self.rect.x = self.screen_rect.width - self.rect.width
+        elif self.rect.x < 0:
+            self.rect.x = 0
         

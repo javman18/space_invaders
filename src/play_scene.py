@@ -38,10 +38,7 @@ class PlayScene (Scene):
     
     def update(self):
         self.ship.update()
-        if self.ship.rect.x > self.app.width - self.ship.rect.width:
-            self.ship.rect.x = self.app.width - self.ship.rect.width
-        elif self.ship.rect.x < 0:
-            self.ship.rect.x = 0
+        
     
     def draw(self):
         self.screen.fill((255,255,255))
