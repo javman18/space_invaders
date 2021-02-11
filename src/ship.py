@@ -7,7 +7,7 @@ class Ship:
         self.image = pygame.image.load("assets/images/nave_aceptable.png")
         self.rect = self.image.get_rect()
         self.rect.midbottom = self.screen_rect.midbottom
-        self.speed = 0
+        self.speed = 0.15
         self.x = float(self.rect.x)
         self.move_right = False
         self.move_left = False
@@ -17,6 +17,14 @@ class Ship:
         
     def update(self):
         self.rect.x += self.speed
+        if self.speed > 0:
+            self.move_right = True
+            self.move_left = False
+            
+        elif self.speed < 0:
+            self.move_left = True
+            self.move_right = False
+            
         if self.rect.x > self.screen_rect.width - self.rect.width:
             self.rect.x = self.screen_rect.width - self.rect.width
         elif self.rect.x < 0:
