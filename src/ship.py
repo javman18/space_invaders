@@ -25,8 +25,8 @@ class Ship:
             self.move_left = True
             self.move_right = False
             
-        if self.rect.x > self.screen_rect.width - self.rect.width:
-            self.rect.x = self.screen_rect.width - self.rect.width
-        elif self.rect.x < 0:
-            self.rect.x = 0
+        if self.rect.x > self.screen_rect.width - self.rect.width + 15:
+            self.rect.x = self.screen_rect.width - self.rect.width + 15
+        elif self.rect.x < 0 - 15:
+            self.rect.x = 0 - 15
         
