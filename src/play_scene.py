@@ -30,7 +30,7 @@ class PlayScene (Scene):
             elif event.key == pygame.K_RIGHT:
                 self.ship.move_right = True
             elif event.key == pygame.K_SPACE:
-                self.bullet_list.append(Bullet(self.app, self.ship.rect.x + 25, self.ship.rect.y))
+                self.ship.shoot()
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
@@ -42,16 +42,12 @@ class PlayScene (Scene):
     
     def update(self):
         self.ship.update()
-        for bullet in self.bullet_list:
-            bullet.update(self.bullet_list)
         
     
     def draw(self):
         self.screen.fill((255,255,255))
         #pygame.draw.rect(self.screen, (0, 255, 0), (0,550,self.app.width,50))
         self.ship.draw()
-        for bullet in self.bullet_list:
-            bullet.draw()
         
 
     

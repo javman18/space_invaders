@@ -1,22 +1,29 @@
 import pygame
-
+from pygame.sprite import Sprite
 class Bullet:
-    def __init__(self, app, x, y):
-        self.screen = app.screen
-        self.screen_rect = app.screen.get_rect()
-        self.image = pygame.image.load("assets/images/bullet_kin.png")
+    def __init__(self, image):
+        
+        self.image = image
         self.rect = self.image.get_rect()
         self.speed = 8
-        self.rect.x = x
-        self.rect.y = y
+        
+        
+        self.is_active = False
+    
 
-    def draw(self):
-        self.screen.blit(self.image, self.rect)
+    def update(self):
+        #self.rect.y -= self.speed
+        #if (self.rect.y < 0):
+        #   bullet_list.remove(self)
+        #  print("eliminado")
+        if self.is_active == True:
+            self.rect.y -= self.speed
+        if self.rect.y < 0:
+            self.is_active = False
 
-    def update(self, bullet_list):
-        self.rect.y -= self.speed
-        if (self.rect.y < 0):
-            bullet_list.remove(self)
-            print("eliminado")
+    def draw(self, screen):
+        if self.is_active:
+            screen.blit(self.image, self.rect)
+
 
         

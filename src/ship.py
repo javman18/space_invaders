@@ -1,4 +1,5 @@
 import pygame
+from weapon import Weapon
 
 class Ship:
     def __init__(self, app):
@@ -12,10 +13,12 @@ class Ship:
         self.x = float(self.rect.x)
         self.move_right = False
         self.move_left = False
+        self.weapon = Weapon()
 
 
 
     def draw(self):
+        self.weapon.draw(self.screen)
         self.screen.blit(self.image, self.rect)
         
     def update(self):
@@ -28,5 +31,8 @@ class Ship:
         else:
             self.speed = 4
         self.rect.x = self.x
-
+        self.weapon.update()
+    def shoot(self):
+        self.weapon.shoot(self.rect.x + 25, self.rect.y)
+        
         

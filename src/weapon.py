@@ -1,0 +1,37 @@
+import pygame
+from bullet import Bullet
+
+class Weapon:
+    def __init__(self):
+        
+        self.bullets = []
+        self.count = 20
+        self.bullet_sprite = pygame.image.load("assets/images/bullet_kin.png")
+        
+        
+        
+    
+    def add_bullet(self):
+        for i in range (self.count):
+            bullet = Bullet(self.bullet_sprite)
+            self.bullets.append(bullet)
+
+    def update(self):
+        for bullet in self.bullets:
+            bullet.update()
+
+    def draw(self, screen):
+        for bullet in self.bullets:
+            bullet.draw(screen)
+
+    def shoot(self, x, y):
+        self.add_bullet()
+        
+        for bullet in self.bullets:
+            if bullet.is_active == False:
+                bullet.rect.x = x
+                bullet.rect.y = y
+                bullet.is_active = True
+                return
+
+    
