@@ -14,8 +14,6 @@ class Bullet:
         self.screen.blit(self.image, self.rect)
 
     def update(self, bullet_list):
-        
-        
         self.rect.y -= self.speed
         if (self.rect.y < 0):
             bullet_list.remove(self)

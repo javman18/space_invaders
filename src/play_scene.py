@@ -30,7 +30,7 @@ class PlayScene (Scene):
             elif event.key == pygame.K_RIGHT:
                 self.ship.speed += 5
             elif event.key == pygame.K_SPACE:
-                self.bullet_list.append(Bullet(self.app, self.ship.rect.x+25, self.ship.rect.y))
+                self.bullet_list.append(Bullet(self.app, self.ship.rect.x + 25, self.ship.rect.y))
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
