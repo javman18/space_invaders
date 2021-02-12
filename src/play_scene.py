@@ -25,18 +25,18 @@ class PlayScene (Scene):
                 self.app.change_scene('intro')
                 print('se presiono una tecla')
             elif event.key == pygame.K_LEFT:
-                self.ship.speed -= 5
+                self.ship.move_left = True
                 print('se presiono una tecla')
             elif event.key == pygame.K_RIGHT:
-                self.ship.speed += 5
+                self.ship.move_right = True
             elif event.key == pygame.K_SPACE:
                 self.bullet_list.append(Bullet(self.app, self.ship.rect.x + 25, self.ship.rect.y))
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
-                self.ship.speed = 0
+                self.ship.move_left = False
             elif event.key == pygame.K_RIGHT:
-                self.ship.speed = 0
+                self.ship.move_right = False
             
             
     

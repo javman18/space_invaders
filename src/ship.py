@@ -8,25 +8,25 @@ class Ship:
         self.rect = self.image.get_rect()
         self.rect.midbottom = self.screen_rect.midbottom
         self.speed = 0.15
+        self.acceleration = 0.05
         self.x = float(self.rect.x)
         self.move_right = False
         self.move_left = False
+
+
 
     def draw(self):
         self.screen.blit(self.image, self.rect)
         
     def update(self):
-        self.rect.x += self.speed
-        if self.speed > 0:
-            self.move_right = True
-            self.move_left = False
-            
-        elif self.speed < 0:
-            self.move_left = True
-            self.move_right = False
-            
-        if self.rect.x > self.screen_rect.width - self.rect.width + 15:
-            self.rect.x = self.screen_rect.width - self.rect.width + 15
-        elif self.rect.x < 0 - 15:
-            self.rect.x = 0 - 15
+        if self.move_right and self.rect.x + self.rect.width - 15 < self.screen_rect.width:
+            print(self.speed)
+            self.x += self.speed     
+        elif self.move_left and self.rect.x + 15 > 0:
+            print(self.speed)
+            self.x -= self.speed    
+        else:
+            self.speed = 4
+        self.rect.x = self.x
+
         
