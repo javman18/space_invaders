@@ -25,8 +25,7 @@ class PlayScene (Scene):
     def process_events(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_x:
-                self.app.change_scene('intro')
-                print('se presiono una tecla')
+                pass
             elif event.key == pygame.K_LEFT:
                 self.ship.move_left = True
                 print('se presiono una tecla')

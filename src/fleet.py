@@ -1,4 +1,5 @@
 import pygame
+from Scene import Scene
 from alien import Alien
 
 class Alien_fleet:
@@ -25,6 +26,8 @@ class Alien_fleet:
                 self.direction *= -1
 
             if alien.check_bottom():
+                self.app.change_scene('gameover')
+                self.aliens.clear()
                 print("perdiste")
 
     
