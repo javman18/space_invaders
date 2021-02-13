@@ -72,9 +72,13 @@ class PlayScene (Scene):
                         bullet.is_active = False
                         self.alien_fleet.aliens.remove(alien)
                         self.score.score += 1
+            if not self.alien_fleet.aliens:
+                bullet.is_active = False
 
         if not self.alien_fleet.aliens:
             print ("ya no hay")
+            self.alien_fleet.create_fleet()
+            self.score.score = 0
             
 
     
