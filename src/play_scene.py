@@ -2,6 +2,7 @@ import pygame
 from Scene import Scene
 from ship import Ship
 from bullet import Bullet
+from fleet import Alien_fleet
 from alien import Alien
 import random
 
@@ -10,14 +11,14 @@ class PlayScene (Scene):
         self.app = app
         self.screen = app.screen
         self.ship = Ship(app)
-        self.alien = Alien(self.screen)
+        self.alien_fleet = Alien_fleet(self)
         
         super().__init__('PlayScene')
         self.bullet_list = []
         
 
     def start(self):
-        
+        self.alien_fleet.create_fleet()
         print('se inicia: ', self.name)
     
     
@@ -44,13 +45,14 @@ class PlayScene (Scene):
     
     def update(self):
         self.ship.update()
+        self.alien_fleet.update()
         
     
     def draw(self):
         self.screen.fill((255,255,255))
         #pygame.draw.rect(self.screen, (0, 255, 0), (0,550,self.app.width,50))
         self.ship.draw()
-        self.alien.draw()
+        self.alien_fleet.draw()
         
 
     
