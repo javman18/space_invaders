@@ -42,7 +42,7 @@ class PlayScene (Scene):
     def update(self):
         self.ship.update()
         self.alien_fleet.update()
-        self.colisions()
+        self.collisions()
         
     
     def draw(self):
@@ -57,7 +57,7 @@ class PlayScene (Scene):
         print('termina: ', self.name)
 
     
-    def colisions(self):
+    def collisions(self):
         for bullet in self.ship.weapon.bullets:
             for alien in self.alien_fleet.aliens:
                 if bullet.is_active == True:
