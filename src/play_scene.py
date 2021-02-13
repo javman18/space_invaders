@@ -73,5 +73,9 @@ class PlayScene (Scene):
                         self.alien_fleet.aliens.remove(alien)
                         self.score.score += 1
 
+        if not self.alien_fleet.aliens:
+            print ("ya no hay")
+            
+
     
         
