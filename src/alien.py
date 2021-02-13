@@ -27,6 +27,10 @@ class Alien():
         screen_rect = self.screen.get_rect()
         if self.rect.right >= screen_rect.right or self.rect.left <= 0:
             return True
+    def check_bottom(self):
+        screen_rect = self.screen.get_rect()
+        if self.rect.bottom >= screen_rect.bottom:
+            return True
 
     
 

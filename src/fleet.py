@@ -24,6 +24,9 @@ class Alien_fleet:
             if alien.check_edges():
                 self.direction *= -1
 
+            if alien.check_bottom():
+                print("perdiste")
+
     
 
 
