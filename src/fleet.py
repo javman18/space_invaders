@@ -7,7 +7,6 @@ class Alien_fleet:
         self.app = game.app
         self.screen = self.app.screen
         self.direction = 1
-        self.drop_speed = 0.8
         self.aliens = []
         self.create_fleet()
         

@@ -11,7 +11,7 @@ class Alien():
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
         self.speed = 1
-        self.drop_speed = 0.1
+        self.drop_speed = 0.5
 
     def draw(self):
         self.screen.blit(self.image, self.rect)
