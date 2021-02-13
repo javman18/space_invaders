@@ -14,11 +14,9 @@ class PlayScene (Scene):
         self.alien_fleet = Alien_fleet(self)
         
         super().__init__('PlayScene')
-        self.bullet_list = []
         
-
     def start(self):
-        self.alien_fleet.create_fleet()
+        
         print('se inicia: ', self.name)
     
     
@@ -41,11 +39,10 @@ class PlayScene (Scene):
             elif event.key == pygame.K_RIGHT:
                 self.ship.move_right = False
             
-            
-    
     def update(self):
         self.ship.update()
         self.alien_fleet.update()
+        self.colisions()
         
     
     def draw(self):
@@ -58,6 +55,19 @@ class PlayScene (Scene):
     
     def exit(self):
         print('termina: ', self.name)
+
+    
+    def colisions(self):
+        for bullet in self.ship.weapon.bullets:
+            for alien in self.alien_fleet.aliens:
+                if bullet.is_active == True:
+                    if(bullet.rect.x < alien.x + alien.rect.width and 
+                    bullet.rect.x > alien.rect.x - alien.rect.width and
+                    bullet.rect.y < alien.rect.y + alien.rect.height and
+                    bullet.rect.y > alien.rect.y - alien.rect.height):
+                        bullet.is_active = False
+                        self.alien_fleet.aliens.remove(alien)
+
 
     
         

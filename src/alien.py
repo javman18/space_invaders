@@ -28,4 +28,6 @@ class Alien():
         if self.rect.right >= screen_rect.right or self.rect.left <= 0:
             return True
 
+    
+
 
