@@ -6,10 +6,7 @@ class Weapon:
         
         self.bullets = []
         self.count = 20
-        self.bullet_sprite = pygame.image.load("assets/images/bullet_kin.png")
-        
-        
-        
+        self.bullet_sprite = pygame.image.load("assets/images/bullet_kin.png")        
     
     def add_bullet(self):
         for i in range (self.count):
@@ -25,13 +22,13 @@ class Weapon:
             bullet.draw(screen)
 
     def shoot(self, x, y):
-        self.add_bullet()
-        
+        self.add_bullet()        
         for bullet in self.bullets:
             if bullet.is_active == False:
                 bullet.rect.x = x
                 bullet.rect.y = y
                 bullet.is_active = True
+                print(self.count)
                 return
 
     

@@ -20,8 +20,6 @@ class PygameApp():
         self.active_scene=IntroScene(self)
         self.scenes = {'intro': IntroScene(self), 'play': PlayScene(self)}
         self.change_scene('intro')
-        
-        
 
     def change_scene(self, scene_name):
         if self.active_scene is not None:
@@ -29,11 +27,8 @@ class PygameApp():
         self.active_scene = self.scenes[scene_name]
         self.active_scene.start()
         
-
-
     def load_assets(self):
         self.font=pygame.font.Font("assets/fonts/HyliaSerif.ttf", 62)
-
 
     def process_events(self):
         for event in pygame.event.get():

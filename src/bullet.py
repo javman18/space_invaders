@@ -5,17 +5,11 @@ class Bullet:
         
         self.image = image
         self.rect = self.image.get_rect()
-        self.speed = 8
-        
-        
+        self.speed = 8        
         self.is_active = False
     
-
     def update(self):
-        #self.rect.y -= self.speed
-        #if (self.rect.y < 0):
-        #   bullet_list.remove(self)
-        #  print("eliminado")
+        
         if self.is_active == True:
             self.rect.y -= self.speed
         if self.rect.y < 0:
