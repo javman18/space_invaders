@@ -13,6 +13,8 @@ class Ship:
         self.x = float(self.rect.x)
         self.move_right = False
         self.move_left = False
+        self.shoot_delay = 1000
+        self.last = pygame.time.get_ticks()
         self.weapon = Weapon()
 
 
@@ -33,7 +35,10 @@ class Ship:
         self.rect.x = self.x
         self.weapon.update()
     def shoot(self):
-        self.weapon.shoot(self.rect.x + 25, self.rect.y)
+        now = pygame.time.get_ticks()
+        if now - self.last > self.shoot_delay:
+            self.last = now
+            self.weapon.shoot(self.rect.x + 25, self.rect.y)
 
     def check_collision(self, object1, object2):
         if(object1.rect.x < object2.rect.x + object2.rect.width and 

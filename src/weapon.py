@@ -6,7 +6,8 @@ class Weapon:
         
         self.bullets = []
         self.count = 20
-        self.bullet_sprite = pygame.image.load("assets/images/bala_buena.png")        
+        self.bullet_sprite = pygame.image.load("assets/images/bala_buena.png")    
+            
     
     def add_bullet(self):
         for i in range (self.count):

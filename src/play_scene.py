@@ -6,6 +6,7 @@ from fleet import Alien_fleet
 from alien import Alien
 from score import Score
 from power_up import PowerUp
+from animation import Animation
 import random
 
 class PlayScene (Scene):
@@ -17,6 +18,7 @@ class PlayScene (Scene):
         self.score = Score(app)
         self.bg = pygame.image.load("assets/images/space_back.jpg")
         self.power = PowerUp(app)
+        self.all_sprites = pygame.sprite.Group()
         super().__init__('PlayScene')
         
     def start(self):
@@ -49,7 +51,7 @@ class PlayScene (Scene):
         self.score.update()
         for power in self.power.power_ups:
             power.update()
-        
+        self.all_sprites.update()
     
     def draw(self):
         self.screen.blit(self.bg, (0, 0))
@@ -60,6 +62,7 @@ class PlayScene (Scene):
         self.alien_fleet.draw()
         for power in self.power.power_ups:
             power.draw()
+        self.all_sprites.draw(self.screen)
         
 
     
@@ -78,7 +81,8 @@ class PlayScene (Scene):
                         bullet.is_active = False
                         self.alien_fleet.aliens.remove(alien)
                         self.score.score += 1
-
+                        explosion = Animation(alien.rect.x, alien.rect.y)
+                        self.all_sprites.add(explosion)
                         if random.random() > 0.6:
                             self.power.addPower(alien.rect.x, alien.rect.y)
                             
