@@ -14,6 +14,7 @@ class PlayScene (Scene):
         self.ship = Ship(app)
         self.alien_fleet = Alien_fleet(self)
         self.score = Score(app)
+        self.bg = pygame.image.load("assets/images/space_back.jpg")
         
         super().__init__('PlayScene')
         
@@ -48,7 +49,8 @@ class PlayScene (Scene):
         
     
     def draw(self):
-        self.screen.fill((255,255,255))
+        self.screen.blit(self.bg, (0, 0))
+        
         self.score.draw()
         #pygame.draw.rect(self.screen, (0, 255, 0), (0,550,self.app.width,50))
         self.ship.draw()
@@ -65,19 +67,19 @@ class PlayScene (Scene):
             for alien in self.alien_fleet.aliens:
                 if bullet.is_active == True:
                     if(bullet.rect.x < alien.x + alien.rect.width and 
-                    bullet.rect.x > alien.rect.x - alien.rect.width and
+                    bullet.rect.x + bullet.rect.width > alien.rect.x and
                     bullet.rect.y < alien.rect.y + alien.rect.height and
-                    bullet.rect.y > alien.rect.y - alien.rect.height):
+                    bullet.rect.y + bullet.rect.height> alien.rect.y):
                         bullet.is_active = False
                         self.alien_fleet.aliens.remove(alien)
                         self.score.score += 1
-            if not self.alien_fleet.aliens:
-                bullet.is_active = False
-
+                    if not self.alien_fleet.aliens:
+                        bullet.is_active = False
+            
         if not self.alien_fleet.aliens:
             print ("ya no hay")
             self.alien_fleet.create_fleet()
-            self.score.score = 0
+            
             
 
     
