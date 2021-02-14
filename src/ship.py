@@ -5,7 +5,7 @@ class Ship:
     def __init__(self, app):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
-        self.image = pygame.image.load("assets/images/nave_aceptable.png")
+        self.image = pygame.image.load("assets/images/dark_ship.png")
         self.rect = self.image.get_rect()
         self.rect.midbottom = self.screen_rect.midbottom
         self.speed = 0.15
