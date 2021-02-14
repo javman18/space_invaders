@@ -15,12 +15,8 @@ class PlayScene (Scene):
         self.ship = Ship(app)
         self.alien_fleet = Alien_fleet(self)
         self.score = Score(app)
-<<<<<<< HEAD
         self.bg = pygame.image.load("assets/images/space_back.jpg")
-        
-=======
         self.power = PowerUp(app)
->>>>>>> power_ups
         super().__init__('PlayScene')
         
     def start(self):
@@ -51,7 +47,8 @@ class PlayScene (Scene):
         self.alien_fleet.update()
         self.collisions()
         self.score.update()
-        self.power.update()
+        for power in self.power.power_ups:
+            power.update()
         
     
     def draw(self):
@@ -61,7 +58,8 @@ class PlayScene (Scene):
         #pygame.draw.rect(self.screen, (0, 255, 0), (0,550,self.app.width,50))
         self.ship.draw()
         self.alien_fleet.draw()
-        self.power.draw()
+        for power in self.power.power_ups:
+            power.draw()
         
 
     
@@ -81,30 +79,20 @@ class PlayScene (Scene):
                         self.alien_fleet.aliens.remove(alien)
                         self.score.score += 1
 
-                        if random.random() > 0.9:
-                            self.power.is_active = True
-                            self.power.rect.x = alien.rect.x
-                            self.power.rect.y = alien.rect.y
-                            self.power.addPower()
-
-            if not self.alien_fleet.aliens:
-                bullet.is_active = False
-<<<<<<< HEA
-            
-=======
-                        if random.random() > 0.9:
-                            self.power.is_active = True
-                            self.power.rect.x = alien.rect.x
-                            self.power.rect.y = alien.rect.y
-                            self.power.addPower()
-
+                        if random.random() > 0.6:
+                            self.power.addPower(alien.rect.x, alien.rect.y)
+                            
             if not self.alien_fleet.aliens:
                 bullet.is_active = False
 
->>>>>>> power_ups
         if not self.alien_fleet.aliens:
             print ("ya no hay")
             self.alien_fleet.create_fleet()
+
+        if self.ship.check_collision(self.ship, self.power):
+            print("hay col")
+            self.score.score += 5
+            self.power.is_active = False
             
             
 

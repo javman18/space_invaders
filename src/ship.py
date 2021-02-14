@@ -34,5 +34,12 @@ class Ship:
         self.weapon.update()
     def shoot(self):
         self.weapon.shoot(self.rect.x + 25, self.rect.y)
+
+    def check_collision(self, object1, object2):
+        if(object1.rect.x < object2.rect.x + object2.rect.width and 
+        object1.rect.x + object1.rect.width > object2.rect.x and
+        object1.rect.y < object2.rect.y + object2.rect.height and
+        object1.rect.y + object1.rect.height> object2.rect.y):
+            return True
         
         
