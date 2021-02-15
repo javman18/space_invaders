@@ -18,11 +18,12 @@ class PlayScene (Scene):
         self.score = Score(app)
         self.bg = pygame.image.load("assets/images/space_back.jpg")
         self.power = PowerUp(app)
+        
         self.all_sprites = pygame.sprite.Group()
         super().__init__('PlayScene')
         
     def start(self):
-        
+        self.score.score = 0
         print('se inicia: ', self.name)
     
     
@@ -55,14 +56,14 @@ class PlayScene (Scene):
     
     def draw(self):
         self.screen.blit(self.bg, (0, 0))
-        
+        self.all_sprites.draw(self.screen)
         self.score.draw()
         #pygame.draw.rect(self.screen, (0, 255, 0), (0,550,self.app.width,50))
         self.ship.draw()
         self.alien_fleet.draw()
         for power in self.power.power_ups:
             power.draw()
-        self.all_sprites.draw(self.screen)
+       
         
 
     
@@ -80,7 +81,7 @@ class PlayScene (Scene):
                     bullet.rect.y + bullet.rect.height> alien.rect.y):
                         bullet.is_active = False
                         self.alien_fleet.aliens.remove(alien)
-                        self.score.score += 1
+                        self.score.score += 20
                         explosion = Animation(alien.rect.x, alien.rect.y)
                         self.all_sprites.add(explosion)
                         if random.random() > 0.6:
@@ -94,9 +95,10 @@ class PlayScene (Scene):
             self.alien_fleet.create_fleet()
 
         if self.ship.check_collision(self.ship, self.power):
-            print("hay col")
-            self.score.score += 5
-            self.power.is_active = False
+            if self.power.is_active == True:
+                print("hay col")
+                self.score.score += 50
+                self.power.is_active = False
             
             
 

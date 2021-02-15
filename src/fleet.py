@@ -1,6 +1,7 @@
 import pygame
 from Scene import Scene
 from alien import Alien
+from score import Score
 
 class Alien_fleet:
     def __init__(self, game):
@@ -10,6 +11,7 @@ class Alien_fleet:
         self.direction = 1
         self.aliens = []
         self.create_fleet()
+        self.score = Score(self.app)
         
     def create_fleet(self):
         for i in range(30, self.app.width - 100, 120):
@@ -26,8 +28,10 @@ class Alien_fleet:
                 self.direction *= -1
 
             if alien.check_bottom():
+                
                 self.app.change_scene('gameover')
                 self.aliens.clear()
+               
                 print("perdiste")
 
     
