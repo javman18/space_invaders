@@ -20,13 +20,13 @@ class Animation(pygame.sprite.Sprite):
             self.images.append(img)
 
     def update(self):
-        speed = 4
+        frame_rate = 4
         self.counter += 1
-        if self.counter >= speed and self.index < len(self.images) - 1:
+        if self.counter >= frame_rate and self.index < len(self.images) - 1:
             print ("explota")
             self.counter = 0
             self.index += 1
             self.image = self.images[self.index]
-        if self.index >= len(self.images) - 1 and self.counter >= speed:
+        if self.index >= len(self.images) - 1 and self.counter >= frame_rate:
             self.kill()
         

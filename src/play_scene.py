@@ -63,9 +63,6 @@ class PlayScene (Scene):
         self.alien_fleet.draw()
         for power in self.power.power_ups:
             power.draw()
-       
-        
-
     
     def exit(self):
         print('termina: ', self.name)

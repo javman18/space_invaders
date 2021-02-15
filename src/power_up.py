@@ -26,9 +26,9 @@ class PowerUp:
         self.rect.x = self.x
 
     def addPower(self, x, y):
-        for i in range (self.count):
+        for _ in range (self.count):
             self.power_ups.append(self)
-      
+    
         for self in self.power_ups:
             if self.is_active == False:
                 self.x = x
