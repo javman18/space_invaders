@@ -18,6 +18,8 @@ class PlayScene (Scene):
         self.score = Score(app)
         self.bg = pygame.image.load("assets/images/space_back.jpg")
         self.power = PowerUp(app)
+        self.expode_sound =pygame.mixer.Sound("assets/sounds/explode_sound.wav")
+        
         
         self.all_sprites = pygame.sprite.Group()
         super().__init__('PlayScene')
@@ -76,6 +78,7 @@ class PlayScene (Scene):
                     bullet.rect.x + bullet.rect.width > alien.rect.x and
                     bullet.rect.y < alien.rect.y + alien.rect.height and
                     bullet.rect.y + bullet.rect.height> alien.rect.y):
+                        pygame.mixer.Sound.play(self.expode_sound)
                         bullet.is_active = False
                         self.alien_fleet.aliens.remove(alien)
                         self.score.score += 20

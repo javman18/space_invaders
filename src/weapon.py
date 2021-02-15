@@ -7,6 +7,7 @@ class Weapon:
         self.bullets = []
         self.count = 20
         self.bullet_sprite = pygame.image.load("assets/images/bala_buena.png")    
+        self.shoot_sound = pygame.mixer.Sound("assets/sounds/shoot_sound.wav")
             
     
     def add_bullet(self):
@@ -26,6 +27,7 @@ class Weapon:
         self.add_bullet()        
         for bullet in self.bullets:
             if bullet.is_active == False:
+                pygame.mixer.Sound.play(self.shoot_sound)
                 bullet.rect.x = x
                 bullet.rect.y = y
                 bullet.is_active = True
