@@ -18,7 +18,7 @@ class PlayScene (Scene):
         self.score = Score(app)
         self.bg = pygame.image.load("assets/images/space_back.jpg")
         self.power = PowerUp(app)
-        self.expode_sound =pygame.mixer.Sound("assets/sounds/explode_sound.wav")
+        self.expode_sound = pygame.mixer.Sound("assets/sounds/explode_sound.wav")
         
         
         self.all_sprites = pygame.sprite.Group()

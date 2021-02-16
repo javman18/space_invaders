@@ -4,7 +4,9 @@ class PowerUp:
     def __init__(self, app):
         self.screen = app.screen
         self.screen_rect = app.screen.get_rect()
-        self.image = pygame.image.load("assets/images/power_up_fire.png")
+        self.image = pygame.image.load("assets/images/powerUp.png")
+        self.image = pygame.transform.scale(self.image, (30, 30))
+
         self.rect = self.image.get_rect()
         self.speed = 0.1
         self.y = float(self.rect.y)
