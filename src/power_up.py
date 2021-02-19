@@ -32,6 +32,7 @@ class PowerUp:
             self.power_ups.append(self)
     
         for self in self.power_ups:
+            
             if self.is_active == False:
                 self.x = x
                 self.y = y
